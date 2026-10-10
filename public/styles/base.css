@@ -1,0 +1,128 @@
+:root {
+    --bg: #111310;
+    --panel: #171a16;
+    --panel-hover: #20241e;
+    --border: #2a2e27;
+    --text: #f1f2ed;
+    --muted: #92988d;
+    --pink: #f3b9d2;
+    --green: #c6e8b9;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--text);
+    background: var(--bg);
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    font-size: 14px;
+}
+
+button, textarea, input {
+    font: inherit;
+}
+
+button {
+    color: inherit;
+    cursor: pointer;
+}
+
+button:focus-visible,
+textarea:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.app {
+    display: flex;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+.main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.topbar {
+    height: 65px;
+    min-height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    border-bottom: 1px solid #242720;
+    background: #111310;
+}
+
+.model-pill {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 12px;
+    color: #c6ccbf;
+    background: #1b1e19;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.menu-button,
+.mobile-brand {
+    display: none;
+}
+
+.chat-page {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.placeholder-page {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    text-align: center;
+}
+
+.placeholder-icon {
+    display: grid;
+    place-items: center;
+    width: 64px;
+    height: 64px;
+    color: var(--pink);
+    background: #30252e;
+    border-radius: 20px;
+    font-size: 28px;
+}
+
+.placeholder-page h2 {
+    margin-bottom: 5px;
+}
+
+.placeholder-page p {
+    color: var(--muted);
+}
+
+.back-chat {
+    margin-top: 15px;
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--panel);
+}

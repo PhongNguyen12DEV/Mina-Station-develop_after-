@@ -1,0 +1,359 @@
+/* ============================================================
+   WELCOME
+   ============================================================ */
+
+.welcome {
+    width: min(100% - 36px, 650px);
+    margin: 9vh auto 35px;
+    text-align: center;
+}
+
+.welcome-avatar {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 76px;
+    height: 76px;
+    margin: 0 auto 22px;
+    overflow: hidden;
+    border: 1px solid #484239;
+    border-radius: 25px;
+    background: #2f2230;
+}
+
+.welcome-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.avatar-fallback {
+    position: absolute;
+    color: var(--pink);
+    font-size: 36px;
+}
+
+.welcome-tag {
+    color: var(--green);
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 800;
+}
+
+.welcome h1 {
+    margin: 14px 0 10px;
+    font-size: clamp(28px, 4vw, 39px);
+    letter-spacing: -1.7px;
+}
+
+.welcome h1 span {
+    color: var(--pink);
+}
+
+.welcome > p {
+    margin: 0;
+    color: #a5ab9f;
+    font-size: 15px;
+}
+
+.suggestions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 36px;
+    text-align: left;
+}
+
+.suggestion {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 15px;
+    background: #191c17;
+    border: 1px solid #2c3028;
+    border-radius: 13px;
+}
+
+.suggestion:hover {
+    background: #20241d;
+    border-color: #65745b;
+}
+
+.suggestion > span:first-child {
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    color: var(--pink);
+    background: #352831;
+    font-size: 17px;
+}
+
+.suggestion div {
+    display: grid;
+    gap: 6px;
+    min-width: 0;
+}
+
+.suggestion strong {
+    font-size: 12px;
+}
+
+.suggestion small {
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.suggestion .suggestion-arrow {
+    margin-left: auto;
+    color: #6c7566;
+}
+
+/* ============================================================
+   COMPOSER
+   ============================================================ */
+
+.composer-area {
+    width: min(100% - 36px, 790px);
+    margin: 0 auto;
+    padding: 12px 0 17px;
+}
+
+.composer {
+    padding: 15px 16px 11px;
+    background: #1a1d18;
+    border: 1px solid #393e33;
+    border-radius: 17px;
+}
+
+.composer:focus-within {
+    border-color: #78856c;
+}
+
+.composer textarea {
+    display: block;
+    width: 100%;
+    max-height: 180px;
+    min-height: 27px;
+    resize: none;
+    overflow-y: auto;
+    color: var(--text);
+    background: transparent;
+    border: 0;
+    outline: none;
+    line-height: 1.6;
+}
+
+.composer textarea::placeholder {
+    color: #858c7e;
+}
+
+.composer-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 11px;
+}
+
+.composer-hint {
+    color: #8c9385;
+    font-size: 11px;
+}
+
+.composer-hint span {
+    color: var(--pink);
+}
+
+.send-button {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    color: #171912;
+    background: var(--green);
+    border: 0;
+    border-radius: 11px;
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.send-button:hover {
+    background: #dcf3d2;
+}
+
+.send-button:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+}
+
+.disclaimer {
+    margin: 10px 0 0;
+    color: #6e7468;
+    text-align: center;
+    font-size: 10px;
+}
+
+/* ============================================================
+   CHAT MESSAGES
+   ============================================================ */
+
+.messages {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scrollbar-color: #3a4035 transparent;
+    scrollbar-width: thin;
+}
+
+.message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    width: min(100% - 36px, 790px);
+    margin: 26px auto;
+}
+
+.message-row.user {
+    flex-direction: row-reverse;
+}
+
+.message-avatar {
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    border: 1px solid #34392f;
+    border-radius: 12px;
+    background: #252a21;
+    color: var(--pink);
+}
+
+.message-row.assistant .message-avatar {
+    background: #30252e;
+    border-color: #4a3544;
+}
+
+.message-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.message-content {
+    min-width: 0;
+    max-width: calc(100% - 47px);
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+}
+
+.message-name {
+    margin-bottom: 6px;
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 750;
+}
+
+.message-row.user .message-name {
+    color: var(--pink);
+    text-align: right;
+}
+
+.message-bubble {
+    white-space: pre-wrap;
+    color: #e6e9e0;
+}
+
+.message-row.user .message-bubble {
+    padding: 11px 15px;
+    color: #f8eaf0;
+    background: #322831;
+    border: 1px solid #493746;
+    border-radius: 15px 4px 15px 15px;
+}
+
+/* ============================================================
+   TYPING LOADER — GIỮ SPINNER XOAY
+   ============================================================ */
+
+.typing {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    margin: 2px 0;
+    animation: minaSpin 1s linear infinite;
+    will-change: transform;
+    transform-origin: center;
+}
+
+.typing span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    margin: -2.5px 0 0 -2.5px;
+    border-radius: 50%;
+    background: var(--pink);
+}
+
+.typing span:nth-child(1) {
+    transform: rotate(0deg) translateY(-9px);
+}
+
+.typing span:nth-child(2) {
+    transform: rotate(120deg) translateY(-9px);
+}
+
+.typing span:nth-child(3) {
+    transform: rotate(240deg) translateY(-9px);
+}
+
+@keyframes minaSpin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   MOBILE CHAT
+   ============================================================ */
+
+@media (max-width: 700px) {
+    .suggestions {
+        grid-template-columns: 1fr;
+        margin-top: 25px;
+    }
+
+    .welcome {
+        margin-top: 6vh;
+    }
+
+    .welcome h1 {
+        letter-spacing: -1px;
+    }
+
+    .composer-area {
+        width: calc(100% - 22px);
+        padding-bottom: 10px;
+    }
+
+    .message-row {
+        width: calc(100% - 24px);
+        gap: 9px;
+        margin: 23px auto;
+    }
+
+    .message-content {
+        max-width: calc(100% - 43px);
+    }
+}
