@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const ollama = require("./ollama");
+const gemini = require("./gemini");   // ← đổi từ "./ollama"
 
 const ROOT = path.resolve(__dirname, "..");
 const DEFAULT_CONFIG = path.join(ROOT, "json", "maid.example.json");
@@ -18,9 +18,8 @@ function readConfig() {
 }
 
 async function generateReply(message) {
-    // mỗi lần gọi đọc lại config để phản ánh thay đổi mới
     const cfg = readConfig();
-    return ollama.chat(message, cfg);
+    return gemini.chat(message, cfg);   // ← đổi từ ollama.chat
 }
 
 module.exports = {

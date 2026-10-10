@@ -139,7 +139,7 @@ export async function sendMessage(text) {
         messages.appendChild(
             createMessage(
                 "assistant",
-                `⚠️ ${error.message}\n\nAnh kiểm tra server.js và Ollama giúp em nhé.`
+                `⚠️ ${error.message}\n\nAnh kiểm tra API giúp em nhé.`
             )
         );
     } finally {

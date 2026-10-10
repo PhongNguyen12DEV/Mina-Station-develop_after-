@@ -7,14 +7,14 @@
   "type": "commonjs",
   "main": "main.js",
   "scripts": {
+    "macos": "node server.js && wait-on http://127.0.0.1:3667",
     "start": "concurrently -k \"node server.js\" \"wait-on http://127.0.0.1:3667 && electron .\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "axios": "^1.20.0",
     "electron": "^44.7.0",
-    "express": "^5.3.0",
-    "ollama": "^0.6.4"
+    "express": "^5.3.0"
   },
   "devDependencies": {
     "concurrently": "^10.0.6",

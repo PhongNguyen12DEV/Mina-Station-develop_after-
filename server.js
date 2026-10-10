@@ -1,7 +1,10 @@
+// server.js
 const express = require("express");
 const path = require("node:path");
 const fs = require("node:fs");
+
 const { generateReply, readConfig, getConfigPath } = require("./core/API");
+const doctor = require("./core/doctor");
 
 const app = express();
 const PORT = 3667;
@@ -56,7 +59,7 @@ app.post("/api/chat", async (req, res) => {
     } catch (error) {
         console.error("[Mina API]", error.message);
         res.status(502).json({
-            error: "Không thể kết nối AI. Hãy kiểm tra Ollama và model."
+            error: "Không thể kết nối AI. Hãy kiểm tra Gemini API key và model."
         });
     }
 });
@@ -85,9 +88,7 @@ app.post("/api/config", (req, res) => {
             return res.status(400).json({ error: "Dữ liệu không hợp lệ." });
         }
 
-        const isEmpty =
-            !body.PERSONAL &&
-            !body.ARGS;
+        const isEmpty = !body.PERSONAL && !body.ARGS;
 
         // Nếu rỗng hoàn toàn → xoá file user để fallback về example
         if (isEmpty) {
@@ -120,6 +121,27 @@ app.post("/api/config", (req, res) => {
     } catch (err) {
         console.error("[Mina Config]", err.message);
         res.status(500).json({ error: err.message });
+    }
+});
+
+/* ============================================================
+   PC DOCTOR API
+   ============================================================ */
+app.get("/api/doctor", async (req, res) => {
+    try {
+        const type = req.query.check;
+
+        if (!type || typeof type !== "string") {
+            return res.status(400).json({
+                error: "Thiếu tham số 'check' (system|memory|disk|processes)."
+            });
+        }
+
+        const data = await doctor.runCheck(type);
+        res.json(data);
+    } catch (err) {
+        console.error("[Mina Doctor]", err.message);
+        res.status(400).json({ error: err.message });
     }
 });
 

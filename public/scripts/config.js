@@ -54,7 +54,8 @@ function field(labelText, value, onChange, opts = {}) {
         : el("input", {
               id,
               type: opts.type || "text",
-              ...(opts.step ? { step: opts.step } : {})
+              ...(opts.step ? { step: opts.step } : {}),
+              ...(opts.placeholder ? { placeholder: opts.placeholder } : {})
           });
 
     input.value = value ?? "";
@@ -85,6 +86,7 @@ function renderConfig(cfg) {
 
     const P = cfg.PERSONAL || (cfg.PERSONAL = {});
     const A = cfg.ARGS || (cfg.ARGS = {});
+    const O = A.options || (A.options = {});
 
     /* --- PERSONAL --- */
     const personalSection = section("PERSONAL", [
@@ -115,32 +117,33 @@ function renderConfig(cfg) {
         )
     ]);
 
-    /* --- ARGS --- */
+    /* --- ARGS (Gemini) --- */
     const argsSection = section("ARGS", [
-        field("Provider", A.provider, v => (A.provider = v)),
-        field("Base URL", A.base_url, v => (A.base_url = v)),
-        field("Endpoint", A.endpoint, v => (A.endpoint = v)),
-        field("Model", A.model, v => (A.model = v)),
-        field("Keep alive", A.keep_alive, v => (A.keep_alive = v)),
+        field("Provider", A.provider, v => (A.provider = v), {
+            hint: "gemini"
+        }),
+        field("Base URL", A.base_url, v => (A.base_url = v), {
+            hint: "https://generativelanguage.googleapis.com"
+        }),
+        field("Model", A.model, v => (A.model = v), {
+            hint: "gemini-2.0-flash / gemini-2.5-flash / gemini-2.5-pro"
+        }),
+        field("API key", A.api_key, v => (A.api_key = v), {
+            type: "password",
+            placeholder: "AIza...",
+            hint: "Lấy tại https://aistudio.google.com/apikey"
+        }),
         field("Timeout (ms)", A.timeout, v => (A.timeout = Number(v) || 0), {
             type: "number"
         })
     ]);
 
-    /* --- ARGS.options --- */
-    const O = A.options || (A.options = {});
+    /* --- ARGS.options (Gemini generationConfig) --- */
     const optionKeys = [
-        "num_ctx",
-        "num_predict",
         "temperature",
         "top_p",
         "top_k",
-        "min_p",
-        "repeat_penalty",
-        "repeat_last_n",
-        "seed",
-        "num_thread",
-        "num_batch"
+        "num_predict"
     ];
 
     const optionsSection = section(

@@ -1,0 +1,335 @@
+/* ============================================================
+   WORKSPACE PAGES (Todo, Doctor)
+   ============================================================ */
+
+.workspace-page {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 26px 30px 40px;
+    scrollbar-color: #3a4035 transparent;
+    scrollbar-width: thin;
+}
+
+.workspace-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.workspace-header h2 {
+    margin: 0 0 6px;
+    font-size: 20px;
+    letter-spacing: -.4px;
+}
+
+.workspace-header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ============================================================
+   TODO LIST
+   ============================================================ */
+.todo-toolbar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.todo-toolbar input {
+    flex: 1;
+    padding: 11px 14px;
+    color: var(--text);
+    background: #1a1d18;
+    border: 1px solid #393e33;
+    border-radius: 11px;
+    font-size: 13px;
+    outline: none;
+}
+
+.todo-toolbar input:focus {
+    border-color: #78856c;
+}
+
+.todo-filters {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.filter-btn {
+    padding: 7px 13px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.filter-btn:hover {
+    color: var(--text);
+    background: var(--panel-hover);
+}
+
+.filter-btn.active {
+    color: var(--green);
+    background: #22291f;
+    border-color: #303c2b;
+}
+
+.todo-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: #191c17;
+    border: 1px solid #2c3028;
+    border-radius: 11px;
+    transition: border-color .15s, background .15s;
+}
+
+.todo-item:hover {
+    background: #20241d;
+    border-color: #3c4234;
+}
+
+.todo-item.done .todo-text {
+    color: #6e7468;
+    text-decoration: line-through;
+}
+
+.todo-check {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: 1.5px solid #4a5440;
+    border-radius: 7px;
+    color: #171912;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.todo-item.done .todo-check {
+    background: var(--green);
+    border-color: var(--green);
+}
+
+.todo-text {
+    flex: 1;
+    min-width: 0;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+    outline: none;
+}
+
+.todo-text[contenteditable="true"] {
+    background: #111310;
+    border-radius: 6px;
+    padding: 2px 6px;
+    outline: 1px solid #78856c;
+}
+
+.todo-delete {
+    width: 28px;
+    height: 28px;
+    flex: 0 0 28px;
+    display: grid;
+    place-items: center;
+    background: transparent;
+    border: 0;
+    color: #6e7468;
+    font-size: 14px;
+    border-radius: 8px;
+}
+
+.todo-delete:hover {
+    color: #ff8a8a;
+    background: #2a1c1c;
+}
+
+.todo-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.todo-empty span {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+/* ============================================================
+   PC DOCTOR
+   ============================================================ */
+.doctor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 14px;
+}
+
+.doctor-card {
+    background: #191c17;
+    border: 1px solid #2c3028;
+    border-radius: 14px;
+    padding: 16px;
+    transition: border-color .2s;
+}
+
+.doctor-card.loading {
+    border-color: #6b7358;
+}
+
+.doctor-card.ok {
+    border-color: #3a4a2e;
+}
+
+.doctor-card.error {
+    border-color: #5c2e2e;
+}
+
+.doctor-card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.doctor-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+    background: #23271e;
+    border-radius: 11px;
+    font-size: 20px;
+}
+
+.doctor-card-head h3 {
+    margin: 0 0 3px;
+    font-size: 13px;
+}
+
+.doctor-card-head small {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.doctor-card-head .doctor-run {
+    margin-left: auto;
+    font-size: 11px;
+    padding: 6px 11px;
+}
+
+.doctor-result {
+    font-size: 12px;
+    color: #c8cfc0;
+    min-height: 24px;
+}
+
+.doctor-loading {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.doctor-error {
+    color: #ff9b9b;
+}
+
+.doctor-message {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.doctor-kv {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 6px 14px;
+    margin: 0;
+}
+
+.doctor-kv dt {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.doctor-kv dd {
+    margin: 0;
+    font-size: 12px;
+    text-align: right;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+}
+
+.doctor-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 4px;
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+}
+
+.doctor-table th,
+.doctor-table td {
+    text-align: left;
+    padding: 5px 6px;
+    border-bottom: 1px solid #262a22;
+}
+
+.doctor-table th {
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.doctor-table tr:last-child td {
+    border-bottom: 0;
+}
+
+@media (max-width: 700px) {
+    .workspace-page {
+        padding: 18px 14px 30px;
+    }
+
+    .workspace-header {
+        flex-direction: column;
+    }
+
+    .todo-toolbar {
+        flex-wrap: wrap;
+    }
+
+    .todo-toolbar input {
+        width: 100%;
+    }
+
+    .doctor-grid {
+        grid-template-columns: 1fr;
+    }
+}

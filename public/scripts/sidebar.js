@@ -3,7 +3,9 @@ import {
     overlay,
     chatPage,
     placeholderPage,
-    placeholderTitle
+    placeholderTitle,
+    todoPage,
+    doctorPage
 } from "./dom.js";
 
 import { resetChatUI } from "./chat.js";
@@ -24,25 +26,47 @@ function openSidebar() {
 /* ============================================================
    PAGE NAV
    ============================================================ */
-export function showChat() {
-    chatPage.hidden = false;
+function hideAllPages() {
+    chatPage.hidden = true;
+    todoPage.hidden = true;
+    doctorPage.hidden = true;
     placeholderPage.hidden = true;
+}
 
+function setActiveNav(page) {
     document.querySelectorAll(".nav-item").forEach((item) => {
-        item.classList.toggle("active", item.dataset.page === "chat");
+        item.classList.toggle("active", item.dataset.page === page);
     });
+}
 
+export function showChat() {
+    hideAllPages();
+    chatPage.hidden = false;
+    setActiveNav("chat");
+    closeSidebar();
+}
+
+function showTodo() {
+    hideAllPages();
+    todoPage.hidden = false;
+    setActiveNav("todo");
+    closeSidebar();
+}
+
+function showDoctor() {
+    hideAllPages();
+    doctorPage.hidden = false;
+    setActiveNav("doctor");
     closeSidebar();
 }
 
 function showPlaceholder(page) {
     placeholderTitle.textContent =
-        page === "placeholder1"
-            ? "Placeholder One"
-            : "Placeholder Two";
+        page === "placeholder1" ? "Placeholder One" : "Placeholder Two";
 
-    chatPage.hidden = true;
+    hideAllPages();
     placeholderPage.hidden = false;
+    setActiveNav(page);
 }
 
 /* ============================================================
@@ -59,18 +83,11 @@ export function initSidebar() {
         button.addEventListener("click", () => {
             const page = button.dataset.page;
 
-            if (page === "chat") {
-                showChat();
-                return;
-            }
+            if (page === "chat") return showChat();
+            if (page === "todo") return showTodo();
+            if (page === "doctor") return showDoctor();
 
             showPlaceholder(page);
-
-            document.querySelectorAll(".nav-item").forEach((item) => {
-                item.classList.toggle("active", item === button);
-            });
-
-            closeSidebar();
         });
     });
 

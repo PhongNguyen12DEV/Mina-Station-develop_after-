@@ -26,11 +26,11 @@
             <button class="nav-item active" data-page="chat">
                 <span>◈</span> Chat
             </button>
-            <button class="nav-item" data-page="placeholder1">
-                <span>◇</span> Placeholder
+            <button class="nav-item" data-page="todo">
+                <span>☑</span> Todo List
             </button>
-            <button class="nav-item" data-page="placeholder2">
-                <span>▧</span> Placeholder
+            <button class="nav-item" data-page="doctor">
+                <span>⚕</span> PC Doctor
             </button>
 
             <div class="sidebar-bottom">
@@ -54,10 +54,11 @@
                 <div class="mobile-brand">✿ Mina Station</div>
                 <div class="model-pill">
                     <span class="status-dot"></span>
-                    <span id="modelName">Local AI</span>
+                    <span id="modelName">Lovely Maid</span>
                 </div>
             </header>
 
+            <!-- ============ CHAT PAGE ============ -->
             <section class="chat-page" id="chatPage">
                 <div class="messages" id="messages">
                     <div class="welcome" id="welcome">
@@ -112,6 +113,103 @@
                 </div>
             </section>
 
+            <!-- ============ TODO LIST PAGE ============ -->
+            <section class="workspace-page" id="todoPage" hidden>
+                <header class="workspace-header">
+                    <div>
+                        <h2>☑ Todo List</h2>
+                        <p>Quản lý công việc hằng ngày của anh.</p>
+                    </div>
+                </header>
+
+                <div class="todo-toolbar">
+                    <input type="text" id="todoInput"
+                        placeholder="Thêm việc cần làm... (Enter để thêm)"
+                        aria-label="Thêm todo">
+                    <button class="btn btn-primary" id="todoAdd">＋ Thêm</button>
+                    <button class="btn btn-ghost" id="todoClearDone">Xoá việc đã xong</button>
+                </div>
+
+                <div class="todo-filters">
+                    <button class="filter-btn active" data-filter="all">Tất cả</button>
+                    <button class="filter-btn" data-filter="active">Chưa xong</button>
+                    <button class="filter-btn" data-filter="done">Đã xong</button>
+                </div>
+
+                <ul class="todo-list" id="todoList"></ul>
+
+                <div class="todo-empty" id="todoEmpty">
+                    <span>🌿</span>
+                    <p>Chưa có việc nào. Thêm việc mới đi anh!</p>
+                </div>
+            </section>
+
+            <!-- ============ PC DOCTOR PAGE ============ -->
+            <section class="workspace-page" id="doctorPage" hidden>
+                <header class="workspace-header">
+                    <div>
+                        <h2>⚕ PC Doctor</h2>
+                        <p>Chẩn đoán &amp; tối ưu máy tính của anh.</p>
+                    </div>
+                    <button class="btn btn-primary" id="doctorRunAll">▶ Chạy toàn bộ</button>
+                </header>
+
+                <div class="doctor-grid" id="doctorGrid">
+                    <!-- Card 1: System Info -->
+                    <div class="doctor-card" data-check="system">
+                        <div class="doctor-card-head">
+                            <div class="doctor-icon">🖥</div>
+                            <div>
+                                <h3>Thông tin hệ thống</h3>
+                                <small>OS, CPU, RAM, uptime</small>
+                            </div>
+                            <button class="btn btn-ghost doctor-run" data-check="system">Chạy</button>
+                        </div>
+                        <div class="doctor-result" id="doctor-result-system"></div>
+                    </div>
+
+                    <!-- Card 2: Disk -->
+                    <div class="doctor-card" data-check="disk">
+                        <div class="doctor-card-head">
+                            <div class="doctor-icon">💾</div>
+                            <div>
+                                <h3>Ổ đĩa</h3>
+                                <small>Dung lượng trống, sức khoẻ</small>
+                            </div>
+                            <button class="btn btn-ghost doctor-run" data-check="disk">Chạy</button>
+                        </div>
+                        <div class="doctor-result" id="doctor-result-disk"></div>
+                    </div>
+
+                    <!-- Card 3: Memory -->
+                    <div class="doctor-card" data-check="memory">
+                        <div class="doctor-card-head">
+                            <div class="doctor-icon">📊</div>
+                            <div>
+                                <h3>Bộ nhớ RAM</h3>
+                                <small>Đang dùng, còn trống</small>
+                            </div>
+                            <button class="btn btn-ghost doctor-run" data-check="memory">Chạy</button>
+                        </div>
+                        <div class="doctor-result" id="doctor-result-memory"></div>
+                    </div>
+
+                    <!-- Card 4: Processes -->
+                    <div class="doctor-card" data-check="processes">
+                        <div class="doctor-card-head">
+                            <div class="doctor-icon">⚙</div>
+                            <div>
+                                <h3>Tiến trình nặng</h3>
+                                <small>Top CPU / RAM</small>
+                            </div>
+                            <button class="btn btn-ghost doctor-run" data-check="processes">Chạy</button>
+                        </div>
+                        <div class="doctor-result" id="doctor-result-processes"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============ PLACEHOLDER PAGE (giữ để tương thích cũ) ============ -->
             <section class="placeholder-page" id="placeholderPage" hidden>
                 <div class="placeholder-icon">◇</div>
                 <h2 id="placeholderTitle">Coming soon</h2>
